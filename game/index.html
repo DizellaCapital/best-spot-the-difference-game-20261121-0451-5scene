@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chronicle of Curiosities — Spot the Difference</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<div id="app">
+  <header id="hud">
+    <div class="brand">
+      <div class="brand-title">Chronicle of Curiosities</div>
+      <div class="brand-sub" id="sceneName">Scene 1 &middot; Clockmaker&rsquo;s Midnight Workshop</div>
+    </div>
+    <div class="counter" id="counter" aria-live="polite">Found: 0 / 7 &nbsp;&bull;&nbsp; 7 Remaining</div>
+    <div class="hud-right">
+      <div class="timer" id="timer" title="Time left in this scene">03:00</div>
+      <button id="hintBtn" type="button" title="Highlight one unfound difference (H)">Hint (H) &middot; 3</button>
+      <button id="soundBtn" type="button" title="Toggle sound">Sound: On</button>
+      <nav class="scenes" id="sceneBtns" aria-label="Scenes"></nav>
+    </div>
+  </header>
+  <main id="stage">
+    <section class="panel" aria-label="Original picture">
+      <div class="panel-label"><span class="dot"></span>Original</div>
+      <canvas id="canvasLeft" width="616" height="404"></canvas>
+    </section>
+    <section class="panel" aria-label="Altered picture">
+      <div class="panel-label"><span class="dot alt"></span>Altered &mdash; find 7 differences</div>
+      <canvas id="canvasRight" width="616" height="404"></canvas>
+    </section>
+  </main>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <div id="banner" hidden>
+    <div class="banner-card">
+      <div class="banner-title" id="bannerTitle">Scene Complete</div>
+      <div class="banner-sub" id="bannerSub"></div>
+      <button id="bannerBtn" type="button">Next Scene (N)</button>
+    </div>
+  </div>
+  <p id="status" role="status" aria-live="polite"></p>
+</div>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>

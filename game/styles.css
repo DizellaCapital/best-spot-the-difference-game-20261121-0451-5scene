@@ -1,0 +1,72 @@
+/* Chronicle of Curiosities — parchment / dark-slate / brass detective theme. */
+:root {
+  --slate: #1d2531;
+  --slate-2: #26313f;
+  --parchment: #f3e7c8;
+  --parchment-2: #e9d9ae;
+  --ink: #2c2417;
+  --brass: #c9a227;
+  --brass-2: #a8821f;
+  --gold: #e8c766;
+  --cream: #f7efda;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; overflow: hidden; background: var(--slate); }
+body { font-family: Georgia, 'Palatino Linotype', 'Times New Roman', serif; color: var(--cream); }
+#app { width: 1280px; height: 480px; margin: 0 auto; background: var(--slate); display: flex; flex-direction: column; }
+#hud {
+  height: 52px; flex: 0 0 52px; display: flex; align-items: center; gap: 14px;
+  padding: 0 16px; background: linear-gradient(180deg, #2a3444, var(--slate-2));
+  border-bottom: 2px solid var(--brass); box-shadow: 0 2px 10px rgba(0,0,0,.45);
+}
+.brand-title { font-size: 21px; letter-spacing: .06em; color: var(--gold); font-weight: bold; line-height: 1.05; }
+.brand-sub { font-size: 12px; color: #cfc4a4; font-style: italic; }
+.counter {
+  margin-left: auto; font-size: 19px; font-weight: bold; letter-spacing: .03em;
+  color: #241d0e; background: linear-gradient(180deg, var(--gold), #d9b23a);
+  border: 2px solid #8a6d1c; border-radius: 8px; padding: 5px 14px; white-space: nowrap;
+  box-shadow: 0 0 0 1px #f7e6a8 inset, 0 2px 6px rgba(0,0,0,.4);
+}
+.hud-right { display: flex; align-items: center; gap: 8px; }
+.timer { font-size: 18px; font-weight: bold; color: var(--cream); background: #141a23; border: 1px solid #4a5568; border-radius: 6px; padding: 4px 10px; font-variant-numeric: tabular-nums; }
+.timer.low { color: #ff9a8a; border-color: #a33; }
+button {
+  font-family: inherit; font-size: 13px; font-weight: bold; color: #241d0e; cursor: pointer;
+  background: linear-gradient(180deg, #e8c766, #c9a227); border: 1px solid #8a6d1c; border-radius: 6px;
+  padding: 6px 10px; box-shadow: 0 1px 4px rgba(0,0,0,.4);
+}
+button:hover { filter: brightness(1.08); }
+button:disabled { opacity: .45; cursor: default; }
+.scenes { display: flex; gap: 5px; }
+.scenes button { padding: 6px 8px; min-width: 30px; }
+.scenes button.active { background: linear-gradient(180deg, #f7e6a8, #e0b93c); outline: 2px solid #fff2b0; }
+#stage { flex: 1; display: flex; gap: 16px; padding: 2px 16px 4px; }
+.panel { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+.panel-label {
+  height: 22px; display: flex; align-items: center; gap: 7px; font-size: 13px;
+  letter-spacing: .14em; text-transform: uppercase; color: #d8cba6;
+}
+.panel-label .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 6px var(--gold); }
+.panel-label .dot.alt { background: #7fd4a8; box-shadow: 0 0 6px #7fd4a8; }
+canvas {
+  width: 616px; height: 404px; display: block; border-radius: 8px; cursor: crosshair;
+  border: 3px solid var(--brass); box-shadow: 0 4px 18px rgba(0,0,0,.55), 0 0 0 1px #6d5614;
+  background: #0f1420; touch-action: none;
+}
+#toast {
+  position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%);
+  background: rgba(20, 26, 35, .92); border: 1px solid var(--brass); color: var(--cream);
+  border-radius: 8px; padding: 7px 16px; font-size: 14px; font-style: italic;
+  opacity: 0; transition: opacity .25s; pointer-events: none; white-space: nowrap; z-index: 5;
+}
+#toast.show { opacity: 1; }
+#banner { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(12, 16, 24, .55); z-index: 6; }
+#banner[hidden] { display: none; }
+.banner-card {
+  background: linear-gradient(180deg, var(--parchment), var(--parchment-2)); color: var(--ink);
+  border: 3px solid var(--brass); border-radius: 12px; padding: 22px 34px; text-align: center;
+  box-shadow: 0 10px 40px rgba(0,0,0,.6);
+}
+.banner-title { font-size: 26px; font-weight: bold; color: #6d5614; }
+.banner-sub { font-size: 15px; margin: 6px 0 14px; font-style: italic; }
+#status { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
